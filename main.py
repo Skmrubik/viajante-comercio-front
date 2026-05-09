@@ -9,10 +9,6 @@ secuencia_recibida = None  # Variable global para guardar el resultado
 WIN = pygame.display.set_mode((600, 600))
 pygame.display.set_caption('Viajante del comercio')
 
-def get_row_col_from_mouse(pos):
-    x, y = pos
-    return x, y
-
 # 2. Función que se ejecutará en segundo plano
 def peticion_asincrona(url, lista_ciudades):
     global secuencia_recibida
@@ -34,8 +30,7 @@ def main():
                 run = False
             
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                row, col = get_row_col_from_mouse(pos)
+                row, col = pygame.mouse.get_pos()
                 ciudades.append([row,col])
                 pygame.draw.circle(WIN, (255, 255, 255), (row, col), 12)
                 pygame.draw.circle(WIN, (255, 0, 0), (row, col), 10)
